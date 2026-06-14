@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1"><stop stop-color="#d9ddcf"/><stop offset="1" stop-color="#f2dfb6"/></linearGradient>
+    <linearGradient id="h" x1="0" x2="1"><stop stop-color="#9f5107"/><stop offset=".5" stop-color="#e9a119"/><stop offset="1" stop-color="#a85b08"/></linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg)"/>
+  <path d="M70 0v600M145 0v600M220 0v600" stroke="#fff" stroke-opacity=".13"/>
+  <ellipse cx="407" cy="528" rx="215" ry="30" fill="#283126" opacity=".13"/>
+  <g transform="translate(228 48)">
+    <rect x="55" y="25" width="234" height="51" rx="10" fill="#283126"/>
+    <path d="M42 70h260l25 58v326c0 38-28 68-64 68H81c-36 0-64-30-64-68V128z" fill="#fff" fill-opacity=".7" stroke="#fff" stroke-width="5"/>
+    <path d="M29 170h286v274c0 28-21 50-48 50H77c-27 0-48-22-48-50z" fill="url(#h)"/>
+    <rect x="53" y="245" width="238" height="143" rx="5" fill="#fbf7ed"/>
+    <path d="M172 266l30 17v35l-30 17-30-17v-35z" fill="none" stroke="#d79419" stroke-width="3"/>
+    <text x="172" y="358" text-anchor="middle" font-family="Georgia,serif" font-size="32" fill="#283126">Baba's Bees</text>
+    <text x="172" y="416" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" letter-spacing="5" fill="#fbf7ed">1KG FAMILY JAR</text>
+  </g>
+</svg>

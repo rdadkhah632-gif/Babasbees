@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000">
+  <defs>
+    <linearGradient id="bg" x1=".1" x2=".9" y1="0" y2="1"><stop stop-color="#efb637"/><stop offset=".5" stop-color="#d88b13"/><stop offset="1" stop-color="#935006"/></linearGradient>
+    <linearGradient id="jar" x1="0" x2="1"><stop stop-color="#fff" stop-opacity=".65"/><stop offset=".5" stop-color="#fff" stop-opacity=".13"/><stop offset="1" stop-color="#fff" stop-opacity=".5"/></linearGradient>
+    <linearGradient id="h" x1="0" x2="1"><stop stop-color="#8d4204"/><stop offset=".5" stop-color="#e79511"/><stop offset="1" stop-color="#7f3803"/></linearGradient>
+    <filter id="shadow"><feDropShadow dx="0" dy="25" stdDeviation="25" flood-color="#4b2604" flood-opacity=".35"/></filter>
+  </defs>
+  <rect width="800" height="1000" fill="url(#bg)"/>
+  <circle cx="660" cy="160" r="220" fill="#fff" opacity=".08"/>
+  <circle cx="100" cy="810" r="260" fill="#283126" opacity=".11"/>
+  <g opacity=".5" stroke="#fff" stroke-width="2" fill="none">
+    <path d="M650 590c-40-86-20-169 64-248M635 533c65-22 110-63 135-124M666 468c-32-25-46-58-41-98"/>
+    <path d="M112 140c80 40 118 104 114 192M137 177c-47 33-72 76-76 130"/>
+  </g>
+  <g filter="url(#shadow)" transform="translate(170 180)">
+    <ellipse cx="230" cy="660" rx="210" ry="48" fill="#4f2704" opacity=".28"/>
+    <rect x="85" y="0" width="290" height="82" rx="20" fill="#283126"/>
+    <path d="M63 72h334l38 98v412c0 61-47 111-105 111H130c-58 0-105-50-105-111V170z" fill="url(#jar)" stroke="#fff" stroke-opacity=".75" stroke-width="8"/>
+    <path d="M45 245h370v323c0 55-41 99-92 99H137c-51 0-92-44-92-99z" fill="url(#h)"/>
+    <rect x="80" y="340" width="300" height="194" rx="8" fill="#fbf7ed"/>
+    <path d="M230 370l50 29v58l-50 29-50-29v-58z" fill="none" stroke="#d79419" stroke-width="5"/>
+    <path d="M230 370v116m-50-87 100 58m0-58-100 58" stroke="#d79419" stroke-width="3" opacity=".65"/>
+    <text x="230" y="513" text-anchor="middle" font-family="Georgia,serif" font-size="48" fill="#283126">Baba's Bees</text>
+    <text x="230" y="572" text-anchor="middle" font-family="Arial,sans-serif" font-size="18" letter-spacing="7" fill="#fbf7ed">FAMILY HONEY</text>
+  </g>
+</svg>
