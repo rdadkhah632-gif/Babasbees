@@ -12,7 +12,7 @@ const details = [
   {
     number: "01",
     title: "UK delivery",
-    body: "UK delivery is £3.49 per order. This is added clearly at Stripe Checkout before you pay. We will add an estimated dispatch and delivery timeframe here before the shop launches.",
+    body: "UK delivery is £3.49 per order. This is added clearly at Stripe Checkout before you pay. We aim to dispatch orders within 2 working days, and we will contact you if anything changes.",
   },
   {
     number: "02",
@@ -57,10 +57,6 @@ export default function DeliveryPage() {
               be appropriate once an order has been delivered. This does not affect your legal
               rights. If there is a genuine issue with your order, we will handle it reasonably
               and fairly, which may include a replacement or refund depending on the circumstances.
-            </p>
-            <p className="mt-4 max-w-4xl text-sm font-semibold leading-7 text-amber">
-              Launch note: this is sensible placeholder wording and should be reviewed alongside
-              final dispatch times, courier arrangements, and the business&apos;s full terms before launch.
             </p>
           </div>
           <div className="mt-12 text-center">

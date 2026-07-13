@@ -28,12 +28,12 @@ export default function AboutPage() {
         <div className="site-container grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
           <div className="relative aspect-[4/3] overflow-hidden rounded-[2.5rem] bg-parchment">
             <Image
-              src="/images/beekeeper-story.svg"
-              alt="Illustration representing Baba's long experience with bees"
+              src="/images/beehive-frames.jpg"
+              alt="Open beehive frames with bees in the sun"
               fill
               priority
               sizes="(min-width: 1024px) 45vw, 90vw"
-              className="object-cover"
+              className="object-cover object-[52%_50%]"
             />
           </div>
           <div>

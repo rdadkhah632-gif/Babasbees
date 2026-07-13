@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowIcon, CheckIcon, LeafIcon, QuoteIcon } from "@/components/icons";
+import { ArrowIcon, CheckIcon, LeafIcon } from "@/components/icons";
 import { ProductCard } from "@/components/product-card";
 import { products } from "@/data/products";
 
@@ -46,12 +46,12 @@ export default function HomePage() {
             </div>
             <div className="relative aspect-[4/5] overflow-hidden rounded-[3rem] border border-white/70 bg-honey shadow-warm">
               <Image
-                src="/images/hero-honey.svg"
-                alt="Baba's Bees honey jar surrounded by warm natural details"
+                src="/images/hero-apiary.jpg"
+                alt="Open jar of honey and honeycomb beside a beehive in warm sunlight"
                 fill
                 priority
                 sizes="(min-width: 1024px) 45vw, 90vw"
-                className="object-cover"
+                className="object-cover object-[72%_50%]"
               />
             </div>
           </div>
@@ -93,13 +93,13 @@ export default function HomePage() {
       <section className="bg-olive py-20 text-cream sm:py-28">
         <div className="site-container grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
           <div className="relative">
-            <div className="aspect-[4/3] overflow-hidden rounded-[2.5rem] bg-parchment">
+            <div className="relative aspect-[4/3] overflow-hidden rounded-[2.5rem] bg-parchment">
               <Image
-                src="/images/beekeeper-story.svg"
-                alt="Warm illustration representing Baba's years of beekeeping experience"
+                src="/images/beehive-frames.jpg"
+                alt="Open beehive frames with bees in the sun"
                 fill
                 sizes="(min-width: 1024px) 45vw, 90vw"
-                className="object-cover"
+                className="object-cover object-[52%_50%]"
               />
             </div>
             <div className="absolute -bottom-5 -right-3 rounded-2xl bg-honey px-6 py-5 text-olive sm:right-7">
@@ -131,26 +131,26 @@ export default function HomePage() {
       <section className="bg-parchment py-20 sm:py-28">
         <div className="site-container">
           <div className="mx-auto max-w-2xl text-center">
-            <p className="eyebrow">Kind words</p>
-            <h2 className="mt-4 font-serif text-4xl text-olive sm:text-5xl">Shared around the table</h2>
+            <p className="eyebrow">Simple ways to enjoy it</p>
+            <h2 className="mt-4 font-serif text-4xl text-olive sm:text-5xl">Made for everyday moments</h2>
             <p className="mt-5 leading-7 text-sage">
-              We&apos;re just getting started online. These spaces are ready for words from our
-              customers as Baba&apos;s Bees grows.
+              Keep a jar ready for breakfast, baking, hot drinks, or a small gift that feels
+              personal and considered.
             </p>
           </div>
           <div className="mt-10 grid gap-6 md:grid-cols-3">
             {[
-              ["“Beautifully rich honey and such a lovely family story.”", "Customer review"],
-              ["“Carefully packed, quickly delivered, and delicious.”", "Customer review"],
-              ["“The honeycomb jar makes a wonderful gift.”", "Customer review"],
-            ].map(([quote, author]) => (
-              <figure key={quote} className="rounded-[2rem] bg-cream p-7">
-                <QuoteIcon className="h-7 w-8 text-honey/50" />
-                <blockquote className="mt-7 font-serif text-2xl leading-9 text-olive">{quote}</blockquote>
-                <figcaption className="mt-6 text-xs font-bold uppercase tracking-[0.17em] text-sage">
-                  {author} · Placeholder
-                </figcaption>
-              </figure>
+              ["Morning spoonfuls", "Drizzle over toast, yoghurt, porridge, pancakes, or fresh fruit."],
+              ["Kitchen sweetness", "Use in marinades, dressings, bakes, or warm lemon and honey drinks."],
+              ["Thoughtful gifting", "Choose honeycomb for a richer texture and a jar that feels special."],
+            ].map(([title, description]) => (
+              <article key={title} className="rounded-[2rem] bg-cream p-7">
+                <span className="grid h-10 w-10 place-items-center rounded-full bg-honey/15 text-amber">
+                  <CheckIcon className="h-5 w-5" />
+                </span>
+                <h3 className="mt-7 font-serif text-2xl leading-tight text-olive">{title}</h3>
+                <p className="mt-4 leading-7 text-sage">{description}</p>
+              </article>
             ))}
           </div>
         </div>

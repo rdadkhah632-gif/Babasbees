@@ -11,6 +11,12 @@ export const metadata: Metadata = {
   },
   description:
     "Shop carefully produced, natural honey from a small family business in Birmingham, West Midlands. Secure online checkout and UK delivery.",
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "32x32" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
+    ],
+  },
   keywords: [
     "honey Birmingham",
     "local honey West Midlands",

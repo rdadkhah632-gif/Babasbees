@@ -1,8 +1,14 @@
 import { NextResponse } from "next/server";
-import Stripe from "stripe";
 import { getProduct } from "@/data/products";
+import { getStripe } from "@/lib/stripe";
 
 export const runtime = "nodejs";
+
+const legacyProductPriceFallbacks = {
+  prod_UhkxPbWIlGzS26: "price_1TsVszK5rkYAaxUOzOvlxCAX",
+  prod_UhkxkNK2aWlJKT: "price_1TsVt3K5rkYAaxUOKaAOpiz2",
+  prod_Uhky5QrY7H64A2: "price_1TsVt5K5rkYAaxUOCmO6uGG8",
+} as const;
 
 function getStripePriceId(
   envName:
@@ -18,12 +24,22 @@ function getStripePriceId(
     STRIPE_PRICE_HONEYCOMB_500G: process.env.STRIPE_PRICE_HONEYCOMB_500G,
   };
 
-  return prices[envName];
+  const priceId = prices[envName];
+  if (priceId && priceId in legacyProductPriceFallbacks) {
+    return legacyProductPriceFallbacks[priceId as keyof typeof legacyProductPriceFallbacks];
+  }
+
+  return priceId;
+}
+
+function getSiteUrl() {
+  return (process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000").replace(/\/$/, "");
 }
 
 export async function POST(request: Request) {
   try {
-    if (!process.env.STRIPE_SECRET_KEY) {
+    const stripe = getStripe();
+    if (!stripe) {
       return NextResponse.json(
         { error: "Stripe is not configured yet. Please contact Baba's Bees." },
         { status: 503 },
@@ -48,11 +64,18 @@ export async function POST(request: Request) {
       );
     }
 
-    const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
-    const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000").replace(/\/$/, "");
+    if (!priceId.startsWith("price_")) {
+      return NextResponse.json(
+        { error: `${product.name} has an invalid Stripe Price ID.` },
+        { status: 503 },
+      );
+    }
+
+    const siteUrl = getSiteUrl();
 
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
+      submit_type: "pay",
       line_items: [{ price: priceId, quantity: 1 }],
       shipping_address_collection: { allowed_countries: ["GB"] },
       shipping_options: [
@@ -61,6 +84,10 @@ export async function POST(request: Request) {
             type: "fixed_amount",
             fixed_amount: { amount: 349, currency: "gbp" },
             display_name: "UK delivery",
+            delivery_estimate: {
+              minimum: { unit: "business_day", value: 2 },
+              maximum: { unit: "business_day", value: 5 },
+            },
           },
         },
       ],

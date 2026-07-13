@@ -25,8 +25,8 @@ export const products: Product[] = [
     priceDisplay: "£10.00",
     description:
       "A generous jar of smooth, naturally sweet honey for toast, porridge, tea, baking, or a simple spoonful.",
-    image: "/images/honey-500g.svg",
-    imageAlt: "Illustration of a 500g jar of Baba's Bees pure honey",
+    image: "/images/honey-500g-real.jpg",
+    imageAlt: "Photograph of a 500g jar of Baba's Bees pure honey",
     badge: "Everyday favourite",
     // This product uses the Stripe Price ID in STRIPE_PRICE_HONEY_500G.
     stripePriceEnv: "STRIPE_PRICE_HONEY_500G",
@@ -40,8 +40,8 @@ export const products: Product[] = [
     priceDisplay: "£20.00",
     description:
       "Our family-size jar, made for homes that never like to run out. The same honest honey in a larger helping.",
-    image: "/images/honey-1kg.svg",
-    imageAlt: "Illustration of a 1kg jar of Baba's Bees pure honey",
+    image: "/images/honey-1kg-real.jpg",
+    imageAlt: "Photograph of a 1kg jar of Baba's Bees pure honey",
     badge: "Family size",
     // This product uses the Stripe Price ID in STRIPE_PRICE_HONEY_1KG.
     stripePriceEnv: "STRIPE_PRICE_HONEY_1KG",
@@ -55,8 +55,8 @@ export const products: Product[] = [
     priceDisplay: "£19.99",
     description:
       "Golden honey paired with a piece of real honeycomb for a beautifully textured, indulgent taste of the hive.",
-    image: "/images/honeycomb-500g.svg",
-    imageAlt: "Illustration of a 500g jar of honey with real honeycomb",
+    image: "/images/honeycomb-jar-real.jpg",
+    imageAlt: "Jar of golden honey packed with real honeycomb",
     badge: "Something special",
     // This product uses the Stripe Price ID in STRIPE_PRICE_HONEYCOMB_500G.
     stripePriceEnv: "STRIPE_PRICE_HONEYCOMB_500G",

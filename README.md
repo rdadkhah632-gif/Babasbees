@@ -95,9 +95,16 @@ The connection is:
 The API route at `src/app/api/checkout/route.ts` validates the local product,
 looks up its server-side Price ID, creates a Checkout Session, and redirects to
 the success or cancelled page. The Stripe secret key is never sent to the
-browser.
+browser. The server-side Stripe client lives in `src/lib/stripe.ts` and pins the
+Stripe API version used by this app.
 
-UK delivery is configured in the API route as a £3.49 fixed shipping option.
+UK delivery is configured in the API route as a £3.49 fixed shipping option with
+an estimated 2-5 business day delivery window shown in Stripe Checkout.
+
+If using the Codex Stripe connector, make sure the Stripe app connection is
+authenticated first. The connector can then be used to confirm or create the
+three one-time Products and Prices above, and the resulting `price_...` IDs
+should be copied into `.env.local` and Vercel.
 
 ## Environment variables
 
@@ -131,11 +138,11 @@ corresponding live-mode value. Test and live Stripe objects are separate.
 ## Before launch
 
 - Replace the placeholder product and story artwork with real photography.
-- Replace placeholder reviews with verified customer feedback or remove them.
 - Confirm dispatch estimates and courier arrangements.
-- Review the placeholder delivery, returns, privacy, and terms wording for the
-  final business setup.
-- Connect the contact form to an email/form service or remove the form.
+- Review delivery, returns, privacy, and terms wording for the final business
+  setup.
+- If preferred, connect the contact form to a hosted form service instead of
+  the current prefilled-email flow.
 - Confirm the business trading name, return address, and any legally required
   seller information.
 - Configure Stripe live mode and complete a real low-value checkout test.
