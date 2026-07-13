@@ -69,8 +69,10 @@ export function buildFulfilmentOrder(
   lineItems: Stripe.LineItem[],
 ): FulfilmentOrder {
   const legacySession = session as CheckoutSessionWithLegacyShippingDetails;
-  const shippingDetails =
-    session.collected_information?.shipping_details || legacySession.shipping_details || null;
+  const collectedShippingDetails = session.collected_information
+    ?.shipping_details as CheckoutShippingDetailsWithPhone | null | undefined;
+  const shippingDetails: CheckoutShippingDetailsWithPhone | null =
+    collectedShippingDetails || legacySession.shipping_details || null;
   const paymentIntent =
     typeof session.payment_intent === "string"
       ? session.payment_intent
