@@ -82,6 +82,10 @@ NEXT_PUBLIC_SITE_URL=http://localhost:3000
 STRIPE_PRICE_HONEY_500G=price_...
 STRIPE_PRICE_HONEY_1KG=price_...
 STRIPE_PRICE_HONEYCOMB_500G=price_...
+STRIPE_WEBHOOK_SECRET=whsec_...
+RESEND_API_KEY=re_...
+ORDER_EMAIL_FROM=Baba's Bees <orders@babasbees.co.uk>
+ORDER_ADMIN_EMAIL=orders@babasbees.co.uk
 ```
 
 The connection is:
@@ -100,6 +104,42 @@ Stripe API version used by this app.
 
 UK delivery is configured in the API route as a £3.49 fixed shipping option with
 an estimated 2-5 business day delivery window shown in Stripe Checkout.
+
+## Order fulfilment emails
+
+The site includes a Stripe webhook at:
+
+```text
+https://your-domain.co.uk/api/stripe/webhook
+```
+
+Configure this endpoint in **Stripe Dashboard > Developers > Webhooks** and
+subscribe to:
+
+```text
+checkout.session.completed
+```
+
+Copy the webhook signing secret into `STRIPE_WEBHOOK_SECRET`.
+
+When a Checkout Session is paid, the webhook:
+
+1. Creates a stable Baba's Bees order reference such as `BB-2026-AB12CD34`.
+2. Sends the customer an order confirmation email if Stripe captured an email.
+3. Sends the fulfilment/admin email to `ORDER_ADMIN_EMAIL`.
+4. Marks the Stripe PaymentIntent metadata with the order reference and email
+   sent flag to reduce duplicate emails on webhook retries.
+
+Email sending uses the Resend HTTP API directly. Configure:
+
+```dotenv
+RESEND_API_KEY=re_...
+ORDER_EMAIL_FROM=Baba's Bees <orders@babasbees.co.uk>
+ORDER_ADMIN_EMAIL=orders@babasbees.co.uk
+```
+
+For live sending, verify the sending domain in Resend before using an address
+at `babasbees.co.uk`.
 
 If using the Codex Stripe connector, make sure the Stripe app connection is
 authenticated first. The connector can then be used to confirm or create the
@@ -146,4 +186,6 @@ corresponding live-mode value. Test and live Stripe objects are separate.
 - Confirm the business trading name, return address, and any legally required
   seller information.
 - Configure Stripe live mode and complete a real low-value checkout test.
+- Configure the Stripe webhook and Resend variables, then confirm both the
+  customer and admin emails arrive for a live low-value checkout.
 - Connect a custom domain and check the site on mobile and desktop.
