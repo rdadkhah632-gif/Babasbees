@@ -33,6 +33,10 @@ type CheckoutShippingDetailsWithPhone = {
   phone?: string | null;
 };
 
+type CheckoutSessionWithLegacyShippingDetails = Stripe.Checkout.Session & {
+  shipping_details?: CheckoutShippingDetailsWithPhone | null;
+};
+
 export function createOrderNumber(session: Pick<Stripe.Checkout.Session, "created" | "id">) {
   const year = new Date(session.created * 1000).getUTCFullYear();
   return `BB-${year}-${session.id.slice(-8).toUpperCase()}`;
@@ -64,7 +68,9 @@ export function buildFulfilmentOrder(
   session: Stripe.Checkout.Session,
   lineItems: Stripe.LineItem[],
 ): FulfilmentOrder {
-  const shippingDetails = session.shipping_details as CheckoutShippingDetailsWithPhone | null;
+  const legacySession = session as CheckoutSessionWithLegacyShippingDetails;
+  const shippingDetails =
+    session.collected_information?.shipping_details || legacySession.shipping_details || null;
   const paymentIntent =
     typeof session.payment_intent === "string"
       ? session.payment_intent
