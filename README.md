@@ -179,12 +179,12 @@ corresponding live-mode value. Test and live Stripe objects are separate.
 
 - Replace the placeholder product and story artwork with real photography.
 - Confirm dispatch estimates and courier arrangements.
-- Review delivery, returns, privacy, and terms wording for the final business
-  setup.
+- Review the live delivery, returns, privacy, and terms pages against the final
+  business setup.
 - If preferred, connect the contact form to a hosted form service instead of
   the current prefilled-email flow.
-- Confirm the business trading name, return address, and any legally required
-  seller information.
+- Add the final business trading name, return address, and any legally required
+  seller information if it should be published on the site.
 - Configure Stripe live mode and complete a real low-value checkout test.
 - Configure the Stripe webhook and Resend variables, then confirm both the
   customer and admin emails arrive for a live low-value checkout.

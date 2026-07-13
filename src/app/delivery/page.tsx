@@ -12,7 +12,7 @@ const details = [
   {
     number: "01",
     title: "UK delivery",
-    body: "UK delivery is £3.49 per order. This is added clearly at Stripe Checkout before you pay. We aim to dispatch orders within 2 working days, and we will contact you if anything changes.",
+    body: "UK delivery is £3.49 per order. This is added clearly at Stripe Checkout before you pay. We aim to dispatch orders within 2 working days, with delivery usually estimated at 2-5 business days after dispatch.",
   },
   {
     number: "02",
@@ -27,7 +27,26 @@ const details = [
   {
     number: "04",
     title: "If something is wrong",
-    body: "Please contact us promptly if your order arrives damaged, incorrect, or has another problem. Include your order details and, where helpful, photographs so we can review it and resolve the issue fairly.",
+    body: "Please contact us promptly if your order arrives damaged, incorrect, missing, or has another problem. Include your order details and, where helpful, photographs so we can review it and resolve the issue fairly.",
+  },
+];
+
+const returns = [
+  {
+    title: "Change of mind",
+    body: "For online orders, please tell us within 14 days after delivery if you want to cancel. You then have another 14 days to return the goods. Returned jars should be unopened, sealed, and handled only as much as needed to inspect them.",
+  },
+  {
+    title: "Food safety",
+    body: "Because honey is a food product, we cannot normally accept a jar back for change of mind if it has been opened, unsealed, damaged, or tampered with. This does not affect your rights if the product is faulty, damaged, or not as described.",
+  },
+  {
+    title: "Refund timing",
+    body: "Where a refund is due, we will refund the eligible amount to the original payment method within 14 days of receiving the returned goods, or within 14 days of agreeing a refund where a return is not needed.",
+  },
+  {
+    title: "Returning an order",
+    body: "Contact us before sending anything back so we can confirm the return address and match the parcel to your order. We may ask for photos first if the issue is damage or an incorrect order.",
   },
 ];
 
@@ -53,10 +72,24 @@ export default function DeliveryPage() {
           <div className="mt-10 rounded-[2rem] bg-parchment p-8 sm:p-10">
             <h2 className="font-serif text-3xl text-olive">Returns and refunds</h2>
             <p className="mt-4 max-w-4xl leading-8 text-sage">
-              Because honey is a food product, returns for a simple change of mind may not always
-              be appropriate once an order has been delivered. This does not affect your legal
-              rights. If there is a genuine issue with your order, we will handle it reasonably
-              and fairly, which may include a replacement or refund depending on the circumstances.
+              We want this to be straightforward. These notes explain how we usually handle
+              cancellations, returns, damaged parcels, and refunds for online orders.
+            </p>
+            <div className="mt-8 grid gap-5 md:grid-cols-2">
+              {returns.map((item) => (
+                <article key={item.title} className="rounded-2xl bg-cream p-6">
+                  <h3 className="font-serif text-2xl text-olive">{item.title}</h3>
+                  <p className="mt-3 text-sm leading-7 text-sage">{item.body}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+          <div className="mt-10 rounded-[2rem] border border-olive/10 bg-white p-8 sm:p-10">
+            <h2 className="font-serif text-3xl text-olive">Tracking</h2>
+            <p className="mt-4 max-w-4xl leading-8 text-sage">
+              We currently fulfil orders manually. If your Royal Mail service includes a tracking
+              reference, we will send it to you after postage is purchased. Some lower-cost services
+              may not include full end-to-end tracking.
             </p>
           </div>
           <div className="mt-12 text-center">
