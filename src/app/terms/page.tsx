@@ -39,7 +39,7 @@ const sections = [
   },
   {
     title: "Contact before returning",
-    body: "Please contact us before sending anything back so we can confirm the correct return address and match the parcel to your order.",
+    body: "Please contact us before sending anything back so we can match the parcel to your order. Returns should be sent to Baba's Bees, 11 David Spencer Drive, Coventry CV3 1QG, United Kingdom.",
   },
 ];
 

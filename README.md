@@ -183,8 +183,8 @@ corresponding live-mode value. Test and live Stripe objects are separate.
   business setup.
 - If preferred, connect the contact form to a hosted form service instead of
   the current prefilled-email flow.
-- Add the final business trading name, return address, and any legally required
-  seller information if it should be published on the site.
+- Add any final business trading name details or extra legally required seller
+  information if it should be published on the site.
 - Configure Stripe live mode and complete a real low-value checkout test.
 - Configure the Stripe webhook and Resend variables, then confirm both the
   customer and admin emails arrive for a live low-value checkout.
